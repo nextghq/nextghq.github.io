@@ -1,0 +1,25 @@
+{
+  "name": "nextghq.github.io",
+  "version": "1.0.0",
+  "description": "NextG Systems blog",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nextghq/nextghq.github.io.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/nextghq/nextghq.github.io/issues"
+  },
+  "homepage": "https://github.com/nextghq/nextghq.github.io#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy-plugin-rss": "^3.1.0"
+  },
+  "private": true,
+  "type": "module"
+}

@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+---
+<article class="post">
+  <header>
+    {% if series %}<p class="kicker">{{ series }}</p>{% endif %}
+    <h1>{{ title }}</h1>
+    <p class="meta"><time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time></p>
+  </header>
+  <div class="prose">
+    {{ content | safe }}
+  </div>
+</article>
