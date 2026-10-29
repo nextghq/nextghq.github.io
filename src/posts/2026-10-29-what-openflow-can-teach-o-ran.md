@@ -268,13 +268,13 @@ tight timing, and on the other side is RU firmware the operator can't see or
 change. That's why "conformant is not performant" bites so hard: you can't
 fix or even inspect the other half.
 
-### The biggest gap: there's no open RU
+### The biggest gap: the radio unit is still mostly closed
 
 Data center networking succeeded with white-box switches because a merchant
 silicon vendor shipped the ASIC, the SDK, and the SAI driver, and a
 white-box vendor built the board around it. Anyone could then run SONiC.
 
-Radio units don't have that yet. Take an RU built on the NXP LA12xx platform.
+Radio units are only starting down that road. Take an RU built on the NXP LA12xx platform.
 NXP provides the programmable baseband silicon and a low-level SDK, not a
 complete PHY with a standard interface on top, open or closed. Building the
 low PHY, the RU side of the 7.2x protocol, the management plane, and the
@@ -282,10 +282,30 @@ timing integration is left to the RU maker. We're not picking on NXP; this
 is the state of the layer across the industry. The "driver" for an RU isn't a
 thin shim. It's an entire low-PHY implementation.
 
-So wireless today has merchant silicon for radios, but no merchant RU stack
-and no open RU. Every O-RU is a closed box at the bottom of an otherwise
-increasingly open system. That's a bigger gap than anything at the top of the
-stack, and we think it's where some of the most important work is.
+The most serious effort to change this has come, fittingly, from the Open
+Compute Project, the same community that gave data center networking SAI and
+ONIE. Meta's **Evenstar** program built a modular reference design for a
+radio unit, with Jabil manufacturing commercial units from it, and in 2023
+Meta moved the work to OCP. The contribution included the hardware
+specification and design files, DPD and CFR firmware, and test automation,
+and Meta contributed its Open M-Plane management software to the Linux
+Foundation. The design is built so that power amplifiers, filters, and even
+the radio silicon can come from different suppliers. That's the white-box
+idea, applied to radios.
+
+OCP has since folded Evenstar into a broader **AI-Native Wireless Access**
+effort. Two of its workstreams stand out. An AI-accelerated radio unit
+continues the open RU work. And a **Radio Abstraction Interface** aims to
+define how third-party applications run on the radio unit itself. Even the
+name echoes SAI, and it targets exactly the layer this post argues is
+missing. It's early, with specifications still to come, but it's pointed in
+the right direction.
+
+Still, wireless today has merchant silicon for radios, an open reference
+design for the hardware, and no widely available open software stack for the
+RU. Most O-RUs remain closed boxes at the bottom of an otherwise increasingly
+open system. That's a bigger gap than anything at the top of the stack, and
+we think it's where some of the most important work is.
 
 ### Is E3 the state bus?
 
@@ -370,8 +390,11 @@ earn their keep.
 **An open RU.** Open low-PHY software and open RU-side fronthaul and
 management, on open FPGA and SDR platforms as well as merchant baseband
 silicon. Split 8 radios are a practical starting point, because the boundary
-is simple and the low PHY can run in the open stack. Until there's an open
-RU, the bottom of the open RAN is still a closed box.
+is simple and the low PHY can run in the open stack. OCP's open RU and Radio
+Abstraction Interface work deserves support from everyone who wants an open
+RAN, including the open-source CU/DU community. Until the RU's software is as
+open as its hardware design, the bottom of the open RAN is still a closed
+box.
 
 **Performance, not just conformance.** Plugfests and certification for open
 fronthaul should publish performance results (throughput, latency, timing
