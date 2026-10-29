@@ -18,7 +18,9 @@
   "homepage": "https://github.com/nextghq/nextghq.github.io#readme",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",
-    "@11ty/eleventy-plugin-rss": "^3.1.0"
+    "@11ty/eleventy-plugin-rss": "^3.1.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "markdown-it-anchor": "^10.0.0"
   },
   "private": true,
   "type": "module"

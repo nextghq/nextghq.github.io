@@ -1,6 +1,24 @@
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import markdownItAnchor from "markdown-it-anchor";
+
+// Posts with `draft: true` are left out of the build entirely.
+// Preview them locally with: ELEVENTY_DRAFTS=1 npm start
+const showDrafts = Boolean(process.env.ELEVENTY_DRAFTS);
 
 export default function (eleventyConfig) {
+  eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.amendLibrary("md", (md) =>
+    md.use(markdownItAnchor, {
+      level: [2, 3],
+      permalink: markdownItAnchor.permalink.headerLink({ safariReaderFix: true }),
+    })
+  );
+
+  eleventyConfig.addPreprocessor("drafts", "*", (data) => {
+    if (data.draft && !showDrafts) return false;
+  });
+
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy({ "src/static": "/" });
 
@@ -19,6 +37,10 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("isoDate", (date) =>
     new Date(date).toISOString().slice(0, 10)
   );
+  eleventyConfig.addFilter("readingTime", (content) => {
+    const words = String(content).replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.round(words / 230)) + " min read";
+  });
 
   eleventyConfig.addPlugin(feedPlugin, {
     type: "atom",

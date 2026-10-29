@@ -3,11 +3,16 @@ layout: layouts/base.njk
 ---
 <article class="post">
   <header>
-    {% if series %}<p class="kicker">{{ series }}</p>{% endif %}
+    {% if series %}<p class="kicker">{{ series }}</p>
+    {% elif tags and tags.length %}<p class="tags">{% for t in tags %}<span>{{ t }}</span>{% endfor %}</p>{% endif %}
     <h1>{{ title }}</h1>
-    <p class="meta"><time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time></p>
+    {% if description %}<p class="dek">{{ description }}</p>{% endif %}
+    <p class="meta">{% if author %}{{ author }} · {% endif %}<time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time> · {{ content | readingTime }}</p>
   </header>
   <div class="prose">
     {{ content | safe }}
   </div>
+  <footer class="post-foot">
+    <a href="/">← All posts</a>
+  </footer>
 </article>
