@@ -1,0 +1,15 @@
+<ol class="post-list">
+{% for post in postList %}
+  <li>
+    <p class="post-meta">
+      <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+      {%- if not currentTopic %}{% set t = post.data.topic | topicInfo %}
+      <a class="topic-label" href="/topics/{{ t.slug }}/">{{ t.name }}</a>{% endif %}
+    </p>
+    <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+    {% set blurb = post.data.description or post.data.excerpt %}{% if blurb %}<p>{{ blurb }}</p>{% endif %}
+  </li>
+{% else %}
+  <li class="empty">No posts here yet.</li>
+{% endfor %}
+</ol>

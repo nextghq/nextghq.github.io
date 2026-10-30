@@ -1,4 +1,5 @@
 ---
+topic: wireless
 title: "Why Now: Open Source, AI, and Open Hardware Meet NextG Wireless"
 date: 2026-10-07
 series: "Building NextG Systems"

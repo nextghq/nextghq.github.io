@@ -1,0 +1,20 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: topics
+  size: 1
+  alias: topic
+permalink: "/topics/{{ topic.slug }}/"
+eleventyComputed:
+  title: "{{ topic.name }}"
+  description: "{{ topic.blurb }}"
+  currentTopic: "{{ topic.slug }}"
+---
+<section class="intro">
+  <h1>{{ topic.name }}</h1>
+  <p>{{ topic.blurb }}</p>
+</section>
+
+{% include "partials/topic-nav.njk" %}
+{% set postList = collections.posts | byTopic(topic.slug) %}
+{% include "partials/post-list.njk" %}

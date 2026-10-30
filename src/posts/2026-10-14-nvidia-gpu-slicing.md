@@ -1,4 +1,5 @@
 ---
+topic: ai-infra
 title: "Slicing an NVIDIA GPU between tenants who don't trust each other"
 description: "How we divide one NVIDIA GPU's memory and compute between gVisor sandboxes: quotas in the Sentry, a broker in the open kernel driver, and a credit scheduler that a tenant can't game by forking."
 author: Dan Mihai Dumitriu

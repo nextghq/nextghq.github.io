@@ -1,4 +1,5 @@
 ---
+topic: ai-infra
 title: "Every tenant gets cluster-admin: multi-tenant Kubernetes with vCluster, and where it stops"
 description: "What vCluster actually isolates when tenants share bare-metal GPU nodes, the holes we found by attacking it from inside a tenant, and the host-side controls that close them."
 author: Dan Mihai Dumitriu

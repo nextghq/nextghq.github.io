@@ -1,4 +1,5 @@
 ---
+topic: ai-infra
 title: "Slicing a GPU between tenants who don't trust each other"
 description: "How we divide one NVIDIA or AMD GPU's memory and compute between gVisor sandboxes, with every limit enforced somewhere the workload can't reach: what worked, what we got wrong, and what it costs."
 author: Dan Mihai Dumitriu

@@ -18,6 +18,7 @@ Add a Markdown file to `src/posts/` named `YYYY-MM-DD-slug.md`:
 ---
 title: "Post title"
 date: 2026-10-07
+topic: wireless                     # required: wireless or ai-infra (see below)
 description: "One or two sentences for the index page and link previews."
 author: Dan Mihai Dumitriu          # optional
 tags: [OCUDU, SDR]                  # optional, shown above the title
@@ -29,6 +30,15 @@ Post body in Markdown.
 ```
 
 The post appears at `/blog/<slug>/` and in the Atom feed at `/feed.xml`.
+
+## Topics
+
+Every post has one `topic`. The home page has filter links for each topic, and each
+topic gets its own page at `/topics/<slug>/`. Topics are defined in
+`src/_data/topics.js`. Add an entry there (slug, name, one-line blurb) to create a
+new one. The build fails if a post names a topic that isn't in that file.
+
+## Drafts
 
 Drafts (`draft: true`) are not built or published. To preview them locally:
 

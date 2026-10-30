@@ -1,4 +1,5 @@
 ---
+topic: wireless
 title: "Conformant Is Not Performant: What OpenFlow Can Teach O-RAN"
 description: "If you were in networking when OpenFlow arrived, O-RAN should feel familiar. Data center networking eventually got openness right with SONiC. Here's what wireless can learn from that, and where the analogy breaks down."
 author: Dan Mihai Dumitriu

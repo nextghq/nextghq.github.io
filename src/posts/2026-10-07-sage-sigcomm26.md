@@ -1,4 +1,5 @@
 ---
+topic: wireless
 title: "Stop asking, start predicting: SAGE cuts 5G uplink latency by 2.5×"
 description: "Our SIGCOMM 2026 paper with EPFL: a real-time AI system at the gNB that predicts when and how much a phone will send, and grants the uplink before it asks."
 author: Dan Mihai Dumitriu

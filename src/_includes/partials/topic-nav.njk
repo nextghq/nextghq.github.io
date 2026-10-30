@@ -1,0 +1,6 @@
+<nav class="topic-nav" aria-label="Filter by topic">
+  <a href="/"{% if not currentTopic %} aria-current="page"{% endif %}>All</a>
+  {%- for t in topics %}
+  <a href="/topics/{{ t.slug }}/"{% if currentTopic == t.slug %} aria-current="page"{% endif %}>{{ t.name }}</a>
+  {%- endfor %}
+</nav>

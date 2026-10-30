@@ -68,7 +68,22 @@ main.wrap { padding-block: 3rem 4rem; flex: 1; width: 100%; }
 }
 .intro p { color: var(--muted); margin: 0 0 2.5rem; }
 
+.topic-nav {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.5rem;
+  font: 500 0.85rem/1 var(--sans);
+}
+.topic-nav a {
+  color: var(--muted); text-decoration: none;
+  border: 1px solid var(--rule); border-radius: 999px; padding: 0.45rem 0.8rem;
+}
+.topic-nav a:hover { color: var(--fg); border-color: var(--faint); }
+.topic-nav a[aria-current="page"] { color: var(--accent); background: var(--accent-soft); border-color: var(--accent); }
+
 .post-list { list-style: none; padding: 0; margin: 0; }
+.post-list .post-meta { margin: 0; display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; align-items: baseline; }
+.post-list .topic-label { font: 500 0.8rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; }
+.post-list .topic-label:hover { text-decoration: underline; }
+.post-list .empty { color: var(--muted); }
 .post-list li { padding-block: 1.5rem; border-top: 1px solid var(--rule); }
 .post-list time, .meta, .kicker {
   font: 500 0.8rem var(--mono); color: var(--muted);
@@ -80,7 +95,9 @@ main.wrap { padding-block: 3rem 4rem; flex: 1; width: 100%; }
 .post-list p { margin: 0; color: var(--muted); }
 
 .post header { margin-bottom: 2rem; }
-.kicker { color: var(--accent); margin: 0 0 0.5rem; }
+.kicker { color: var(--accent); margin: 0 0 0.6rem; }
+.kicker a { color: inherit; text-decoration: none; }
+.kicker a:hover { text-decoration: underline; }
 .post h1 {
   font: 600 clamp(1.9rem, 5.5vw, 2.6rem)/1.15 var(--serif);
   margin: 0 0 0.75rem; letter-spacing: -0.015em;
